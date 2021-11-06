@@ -6,11 +6,15 @@ class PokemonApi extends RESTDataSource {
     this.baseURL = 'https://pokeapi.co/api/v2/';
   }
 
-  async getPokemon() {
-
-    console.log( await this.get('pokemon'))
+   getPokemon() {
     return this.get('pokemon');
   }
+
+  getPokemonStats(id){
+    return this.get(`pokemon/${id}`)
+  }
+
+
 }
 
 module.exports = PokemonApi;
