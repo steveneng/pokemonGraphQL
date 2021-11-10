@@ -20,7 +20,7 @@ type Stat{
   forms:[Identifier!]
   abilities:[ability!]!
 }
-
+### TESTING REBASWE LOL THIS IS THE FUTREEEEEEEE###
 type Identifier{
   name:String
 }
