@@ -1,20 +1,27 @@
-const { RESTDataSource } = require('apollo-datasource-rest');
+const { RESTDataSource } = require("apollo-datasource-rest");
 
-class PokemonApi extends RESTDataSource {
+class PokemonAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = 'https://pokeapi.co/api/v2/';
+    this.baseURL = "https://pokeapi.co/api/v2/";
   }
 
-   getPokemon() {
-    return this.get('pokemon');
+  getPokemons() {
+    return this.get("pokemon");
   }
 
-  getPokemonStats(id){
-    return this.get(`pokemon/${id}`)
+  getPokemon(pokemonId) {
+    return this.get(`pokemon/${pokemonId}`)
   }
 
+  getStat(id) {
+    return this.get(`stat/${id}`)
+  }
+
+  getAbility(id) {
+    return this.get(`ability/${id}`)
+  }
 
 }
 
-module.exports = PokemonApi;
+module.exports = PokemonAPI;

@@ -1,7 +1,7 @@
-var express = require('express');
-const PokemonApi = require('./pokemon-api');
-var resolvers = require('./resolvers');
-var typeDefs = require('./schema');
+const express = require('express');
+const PokemonAPI = require('./pokemon-api');
+const resolvers = require('./resolvers');
+const typeDefs = require('./schema');
 const { ApolloServer } = require('apollo-server');
 
 const server = new ApolloServer({
@@ -9,7 +9,7 @@ const server = new ApolloServer({
   resolvers,
   dataSources: () => {
     return {
-      pokemonApi: new PokemonApi(),
+      pokemonAPI: new PokemonAPI(),
     };
   },
 });
