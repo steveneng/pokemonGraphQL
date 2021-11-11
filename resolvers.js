@@ -1,15 +1,20 @@
 const resolvers = {
   Query: {
-    pokemon: async (_, __, { dataSources }) => {
-      const {results} = await dataSources.pokemonApi.getPokemon();
-      return results
+    getAllPokemon: async (_, __, { dataSources }) => {
+      const { results } = await dataSources.pokemonAPI.getPokemons();
+      return results;
     },
-    pokemonStat: async (_,{id},{dataSources})=>{
-      let items = await dataSources.pokemonApi.getPokemonStats(id)
-      console.log(items)
-      return await dataSources.pokemonApi.getPokemonStats(id)
-    }
-  }
+    pokemon: async (_, {id}, { dataSources }) => {
+      const items = await dataSources.pokemonAPI.getPokemon(id);
+      return items;
+    },
+  },
+  // Pokemon: {
+  //   stats: async (_, { id }, { dataSources }) => {
+  //     const { results } = await dataSources.pokemonAPI.getStat(id);
+  //     return results;
+  //   },
+  // },
 };
 
 module.exports = resolvers;
