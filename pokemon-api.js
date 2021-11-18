@@ -11,17 +11,20 @@ class PokemonAPI extends RESTDataSource {
   }
 
   getPokemon(pokemonId) {
-    return this.get(`pokemon/${pokemonId}`)
+    return this.get(`pokemon/${pokemonId}`);
   }
 
   getStat(id) {
-    return this.get(`stat/${id}`)
+    return this.get(`stat/${id}`);
   }
 
   getAbility(id) {
-    return this.get(`ability/${id}`)
+    return this.get(`ability/${id}`);
   }
 
+  getMoves() {
+    return this.get(`move`);
+  }
 }
 
 module.exports = PokemonAPI;
