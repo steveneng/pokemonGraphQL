@@ -1,16 +1,16 @@
 const resolvers = {
   Query: {
-    getAllPokemon: (_, __, { dataSources }) => {
+     getAllPokemon: async (_, __, { dataSources }) => {
       // Removing async / await avoids null values - need to investigate
       // const { results } = await dataSources.pokemonAPI.getPokemons();
-      return dataSources.pokemonAPI.getPokemons();
+      return await dataSources.pokemonAPI.getPokemons();
     },
-    pokemon: (_, {id}, { dataSources }) => {
+    pokemon: async (_, {id}, { dataSources }) => {
       // const items = await dataSources.pokemonAPI.getPokemon(id);
-      return dataSources.pokemonAPI.getPokemon(id);
+      return await dataSources.pokemonAPI.getPokemon(id);
     },
-    getAllMoves: (_, __, { dataSources }) => {
-      return dataSources.pokemonAPI.getMoves();
+    getAllMoves: async(_, __, { dataSources }) => {
+      return await dataSources.pokemonAPI.getMoves();
     },
   },
   // Pokemon: {
