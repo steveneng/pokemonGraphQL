@@ -3,7 +3,7 @@ const resolvers = {
      getAllPokemon: async (_, __, { dataSources }) => {
       // Removing async / await avoids null values - need to investigate
       // const { results } = await dataSources.pokemonAPI.getPokemons();\
-      console.log(await dataSources.pokemonAPI.getPokemons())
+
       return await dataSources.pokemonAPI.getPokemons();
     },
     pokemon: async (_, {id}, { dataSources }) => {
@@ -14,13 +14,17 @@ const resolvers = {
       return await dataSources.pokemonAPI.getMoves();
     },
   },
-  // Pokemon: {
-    // The id seems to be for the ability and stat, not the id of the pokemon
-    // stats: async (_, { id }, { dataSources }) => {
-    //   const { results } = await dataSources.pokemonAPI.getStat(id);
-    //   return results;
-    // },
-  // },
+
+
+  EndpointResult:{
+    image : async({name},__,{dataSources})=>{
+
+      // this resolver grabs the name from the parent end point to send the name to getPokemon
+
+      let {sprites} = await dataSources.pokemonAPI.getPokemon(name)
+      return sprites["other"]["official-artwork"]
+    }
+  }
 };
 
 module.exports = resolvers;
