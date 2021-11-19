@@ -25,6 +25,12 @@ const typeDefs = gql`
     name: String
     "The URL of the referenced resource."
     url: String
+    "gives image of the given pokemon"
+    image: PokemonSprite
+  }
+
+  type PokemonSprite{
+    front_default: String
   }
 
   type Pokemon {
@@ -73,7 +79,7 @@ const typeDefs = gql`
 
   "Reusable name type"
   type Name {
-    name: String
+    name: String  @deprecated (reason:"not needed ")
   }
 `;
 
