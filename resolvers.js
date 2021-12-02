@@ -1,10 +1,7 @@
 const resolvers = {
   Query: {
-     getAllPokemon: async (_, __, { dataSources }) => {
-      // Removing async / await avoids null values - need to investigate
-      // const { results } = await dataSources.pokemonAPI.getPokemons();\
-
-      return await dataSources.pokemonAPI.getPokemons();
+     getAllPokemon: async (_, {limit,offset}, { dataSources }) => {
+      return await dataSources.pokemonAPI.getPokemons(limit,offset);
     },
     pokemon: async (_, {id}, { dataSources }) => {
       // const items = await dataSources.pokemonAPI.getPokemon(id);

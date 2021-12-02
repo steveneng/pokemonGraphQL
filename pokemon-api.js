@@ -6,8 +6,8 @@ class PokemonAPI extends RESTDataSource {
     this.baseURL = "https://pokeapi.co/api/v2/";
   }
 
-  getPokemons() {
-    return this.get("pokemon");
+  getPokemons(limit,offset) {
+    return this.get(`pokemon?limit=${limit}&offset=${offset}`);
   }
 
   getPokemon(pokemonId) {
