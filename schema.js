@@ -3,7 +3,7 @@ const { gql } = require("apollo-server");
 const typeDefs = gql`
 
   type Query {
-    getAllPokemon: ResourceList
+    getAllPokemon(limit:Int, offset:Int): ResourceList
     pokemon(id: Int): Pokemon
     # pokemonStat(id: Int): Pokemon!
     getAllMoves: ResourceList
