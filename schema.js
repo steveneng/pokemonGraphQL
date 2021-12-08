@@ -1,23 +1,24 @@
 const { gql } = require("apollo-server");
 
 const typeDefs = gql`
-
   type Query {
-    getAllPokemon(limit:Int, offset:Int): ResourceList
+    getAllPokemon(limit: Int, offset: Int): ResourceList
     pokemon(id: Int): Pokemon
     # pokemonStat(id: Int): Pokemon!
     getAllMoves: ResourceList
+    "this searches pokemon by generation"
+    getPokemonByGeneration(gen: Int!): [EndpointResult]
   }
 
   type ResourceList {
     "The total number of resources available from this API."
     count: Int
     "The URL for the next page in the list."
-		next: String
+    next: String
     "The URL for the previous page in the list."
-		previous: String
+    previous: String
     "A list of named API resources."
-		results: [EndpointResult]
+    results: [EndpointResult]
   }
 
   type EndpointResult {
@@ -27,9 +28,11 @@ const typeDefs = gql`
     url: String
     "gives image of the given pokemon"
     image: PokemonSprite
+    "pokemon id grabbed from URL"
+    id: Int
   }
 
-  type PokemonSprite{
+  type PokemonSprite {
     front_default: String
   }
 
@@ -79,7 +82,7 @@ const typeDefs = gql`
 
   "Reusable name type"
   type Name {
-    name: String  @deprecated (reason:"not needed ")
+    name: String @deprecated(reason: "not needed ")
   }
 `;
 
